@@ -5,7 +5,7 @@ const db = require("../models");
 router.get("/all", (req, res) => {
   db.Todo.find().then(todos => {
     res.send(todos);
-  });
+  }).catch(err => res.send(err));
 });
 
 router.get("/find/:id", (req, res) => {
@@ -17,7 +17,7 @@ router.get("/find/:id", (req, res) => {
 router.post("/new", (req, res) => {
   db.Todo.create({ text: req.body.text }).then(newTodo => {
     res.send(newTodo);
-  });
+  }).catch(err => res.send(err));
 });
 
 router.patch("/update", (req, res) => {

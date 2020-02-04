@@ -3,9 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const connection = mongoose.connection;
 const logger = require("morgan");
-const PORT = process.env.PORT || 3000;
-const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/deploy_todoDB";
+const PORT = process.env.PORT || 4000;
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/deploy_todoDB";
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
@@ -14,7 +13,7 @@ mongoose.connect(MONGO_URI, {
 });
 
 connection.on("error", console.error.bind(console, "connection error:"));
-connection.once("open", function() {
+connection.once("open", function () {
   console.log("connected to db instance");
 });
 
